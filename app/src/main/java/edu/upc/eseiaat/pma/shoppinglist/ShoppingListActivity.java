@@ -44,7 +44,7 @@ public class ShoppingListActivity extends AppCompatActivity {
         itemList.add("Copas Danone");
         itemList.add("Dinosaurio");
 
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, itemList);
+        adapter = new ArrayAdapter<>(this, R.layout.shopping_item, itemList);
 
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
