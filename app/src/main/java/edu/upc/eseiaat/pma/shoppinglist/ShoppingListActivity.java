@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+//SESSIO 2
 public class ShoppingListActivity extends AppCompatActivity {
 
     private ArrayList<String> itemList;
