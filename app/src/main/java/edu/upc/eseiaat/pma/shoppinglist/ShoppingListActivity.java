@@ -22,7 +22,7 @@ import java.util.ArrayList;
 //SESSIO 2
 public class ShoppingListActivity extends AppCompatActivity {
 
-    private ArrayList<String> itemList;
+    private ArrayList<ShoppingItem> itemList;
     private ShoppingListAdapter adapter;
 
     private ListView list;
@@ -39,10 +39,10 @@ public class ShoppingListActivity extends AppCompatActivity {
         edit_item = (EditText) findViewById(R.id.edit_item);
 
         itemList = new ArrayList<>();
-        itemList.add("Patatas");
-        itemList.add("Pilas AAA");
-        itemList.add("Copas Danone");
-        itemList.add("Dinosaurio");
+        itemList.add(new ShoppingItem("Patatas", true));
+        itemList.add(new ShoppingItem("Pilas AAA", true));
+        itemList.add(new ShoppingItem("Copas Danone"));
+        itemList.add(new ShoppingItem("Dinosaurio"));
 
         adapter = new ShoppingListAdapter(this, R.layout.shopping_item, itemList);
 
@@ -115,7 +115,7 @@ public class ShoppingListActivity extends AppCompatActivity {
     private void addItem() {
         String item_text = edit_item.getText().toString();
         if (!item_text.isEmpty()) {
-            itemList.add(item_text);
+            itemList.add(new ShoppingItem(item_text));
             adapter.notifyDataSetChanged();
             edit_item.setText("");
         }
@@ -124,6 +124,7 @@ public class ShoppingListActivity extends AppCompatActivity {
 
 
         }
+        list.smoothScrollToPosition(itemList.size()-1);
 
     }
     private void quitarTeclado(View v) {
