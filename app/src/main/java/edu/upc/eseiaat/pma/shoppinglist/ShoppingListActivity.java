@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -83,6 +84,20 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         list.setAdapter(adapter);
 
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
+                Log.i("Alvaro", "onItemClick");
+                itemList.get(pos).toggleCheked();
+                adapter.notifyDataSetChanged();
+                /*
+                ShoppingItem item = itemList.get(pos);
+                boolean checked = item.isChecked();
+                itemList.get(pos).setChecked(!checked);
+                */
+            }
+        });
+
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> list, View item, int pos, long id) {
@@ -97,7 +112,7 @@ public class ShoppingListActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.confirm);
         String fmt = getResources().getString(R.string.confirm_message);
-        builder.setMessage(String.format(fmt, itemList.get(pos)
+        builder.setMessage(String.format(fmt, itemList.get(pos).getText()
         ));
         builder.setPositiveButton(R.string.remove, new DialogInterface.OnClickListener() {
             @Override
