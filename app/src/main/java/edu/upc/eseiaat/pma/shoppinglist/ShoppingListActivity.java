@@ -251,9 +251,15 @@ public class ShoppingListActivity extends AppCompatActivity {
         while (i < itemList.size()) {
             if (itemList.get(i).isChecked()) {
                 itemList.remove(i);
+                if (itemList.size() == 0) {
+                    Toast.makeText(this, R.string.msgEmptyList, Toast.LENGTH_LONG).show();
+                }
             } else {
                 i++;
             }
+        }
+        if (itemList.size() == -1) {
+            Toast.makeText(this, R.string.msgEmptyList, Toast.LENGTH_LONG).show();
         }
         adapter.notifyDataSetChanged();
     }
