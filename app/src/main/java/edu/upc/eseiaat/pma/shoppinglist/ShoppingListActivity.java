@@ -9,6 +9,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -80,7 +83,6 @@ public class ShoppingListActivity extends AppCompatActivity {
         }
     }
 
-    
     @Override
     protected void onStop() {
         super.onStop();
@@ -198,5 +200,37 @@ public class ShoppingListActivity extends AppCompatActivity {
     private void quitarTeclado(View v) {
         InputMethodManager teclado = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         teclado.hideSoftInputFromWindow(v.getWindowToken(), 0);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.options, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.clear_checked:
+                clearChecked();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    private void clearChecked() {
+        int i = 0;
+        while (i < itemList.size()) {
+            if (itemList.get(i).isChecked()) {
+                itemList.remove(i);
+            } else {
+                i++;
+            }
+        }
+        adapter.notifyDataSetChanged();
     }
 }
