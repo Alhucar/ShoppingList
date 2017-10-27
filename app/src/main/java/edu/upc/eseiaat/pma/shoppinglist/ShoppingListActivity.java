@@ -75,6 +75,7 @@ public class ShoppingListActivity extends AppCompatActivity {
                     itemList.add(new ShoppingItem(parts[0], parts[1].equals("true")));
                 }
             }
+            else Toast.makeText(this, R.string.msgAddItem, Toast.LENGTH_LONG).show();
             fis.close();
 
         } catch (FileNotFoundException e) {
@@ -193,8 +194,6 @@ public class ShoppingListActivity extends AppCompatActivity {
         }
         else {
             quitarTeclado(edit_item);
-
-
         }
         list.smoothScrollToPosition(itemList.size()-1);
 
@@ -229,6 +228,7 @@ public class ShoppingListActivity extends AppCompatActivity {
     }
 
     private void clearAll() {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.confirm);
         builder.setMessage(R.string.confirm_clear_all);
@@ -237,10 +237,13 @@ public class ShoppingListActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 itemList.clear();
                 adapter.notifyDataSetChanged();
+                Toast.makeText(getApplication(), R.string.msgEmptyList, Toast.LENGTH_LONG).show();
             }
         });
+
         builder.setNegativeButton(android.R.string.cancel, null);
         builder.create().show();
+
     }
 
     private void clearChecked() {

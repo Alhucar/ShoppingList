@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Lista de la compra</string>
-    <string name="confirm">Comfirmar</string>
+    <string name="confirm">Confirmar</string>
     <string name="confirm_message">Seguro que quieres borrar \'%1$s\'?</string>
     <string name="remove">Borrar</string>
+    <string name="clear_all">Borrar todo</string>
+    <string name="clear_checked">Borrar items seleccionados</string>
+    <string name="cannot_read"></string>
+    <string name="confirm_clear_all">Seguro que quieres borrar todos los items?</string>
+    <string name="msgAddItem">Lista vacia, añade nuevo item</string>
+    <string name="msgEmptyList">Lista vacia</string>
 </resources>

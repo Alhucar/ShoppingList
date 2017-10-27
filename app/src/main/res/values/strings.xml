@@ -8,4 +8,6 @@
     <string name="clear_checked">Clear checked items</string>
     <string name="clear_all">Clear all</string>
     <string name="confirm_clear_all">Are you sure you want to clear all items?</string>
+    <string name="msgAddItem">Empty list, add a new item</string>
+    <string name="msgEmptyList">List empty</string>
 </resources>
